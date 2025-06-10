@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RRG Advisory | Financial Clarity & Strategic Direction</title>
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      padding-top: 70px; /* for fixed nav */
+    }
+    a {
+      color: #ccc;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #1e90ff;
+      outline: none;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      padding: 30px 0 10px;
+      border-bottom: 1px solid #333;
+    }
+    header img {
+      height: 50px;
+      margin-right: 20px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #e0e0e0;
+    }
+    header p {
+      margin: 4px 0 0 0;
+      color: #777;
+      font-size: 1rem;
+      font-style: italic;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #181818;
+      border-bottom: 1px solid #222;
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 0;
+      display: flex;
+      gap: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    nav ul li {
+      padding: 6px 0;
+    }
+    nav ul li a {
+      color: #ccc;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #1e90ff;
+      border-bottom-color: #1e90ff;
+    }
+
+    section {
+      margin: 50px 0;
+    }
+    h2 {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: 700;
+      color: #fff;
+    }
+    p, ul {
+      max-width: 800px;
+      margin: 0 auto 20px auto;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    ul li {
+      margin-bottom: 10px;
+    }
+    .about-us {
+      background-color: #1f1f1f;
+      padding: 25px 30px;
+      border-radius: 8px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+    @media(min-width: 700px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media(min-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .service-card {
+      background-color: #1f1f1f;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 25px rgba(30,144,255,0.6);
+      border: 2px solid #1e90ff;
+    }
+    .service-card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: #1e90ff;
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+    .service-card p {
+      margin: 0;
+      color: #ccc;
+    }
+
+    .differentiators {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      color: #ccc;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    @media(min-width: 768px) {
+      .differentiators {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .differentiators p {
+      margin: 0;
+    }
+
+    form {
+      background-color: #1f1f1f;
+      padding: 30px 25px;
+      max-width: 600px;
+      margin: 0 auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+    }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 14px 12px;
+      margin-bottom: 20px;
+      border: 1px solid #444;
+      border-radius: 6px;
+      background-color: #121212;
+      color: #eee;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      resize: none;
+      font-family: inherit;
+    }
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: #1e90ff;
+      box-shadow: 0 0 5px #1e90ff;
+    }
+    form button {
+      background-color: #1e90ff;
+      border: none;
+      padding: 15px 25px;
+      color: #fff;
+      font-size: 1.15rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover {
+      background-color: #0f61c9;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      margin: 60px 0 30px 0;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#aboutus" class="nav-link">About Us</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#differentiators" class="nav-link">Why Choose Us</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <header>
+      <img src="rrg-logo.png" alt="RRG Advisory Logo" style="height: 120px;" />
+        <h1>RRG Advisory</h1>
+     </p>
+     <p>
+        <p>Financial Clarity. Strategic Direction.</p>
+      </div>
+    </header>
+
+    <section id="aboutus" class="about-us">
+      <h2>About Us</h2>
+      <p>
+        In today’s fast-paced business world, having a trusted financial partner who understands both the big picture and the finer details is crucial. At RRG Advisory, we’re passionate about empowering businesses to thrive by turning complex financial challenges into clear, actionable strategies that drive growth and sustainability.
+      </p>
+      <p>
+        Our founder, Rocky Ricardo Govender, has worked with a wide range of businesses across both South African and international markets, gaining insight into the unique challenges and opportunities facing companies at different growth stages. A tenure at one of the UK's top 15 audit and advisory firms provided hands-on experience navigating diverse markets and innovative business models. This global perspective, combined with local market insight, allows RRG Advisory to bring an elevated level of professionalism and strategic thinking to South African SMEs.
+      </p>
+      <p>
+        At RRG Advisory, we believe financial systems should enable — not overwhelm — business owners. Through clear communication and hands-on support, we simplify complexity and help our clients navigate financial decisions with confidence.
+      </p>
+    </section>
+
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <article class="service-card">
+          <h3>Monthly Reporting Pack</h3>
+          <p>We deliver accurate, visual monthly reports with insights and commentary tailored to your business.</p>
+        </article>
+        <article class="service-card">
+          <h3>Monthly Accounting Records Review</h3>
+          <p>Ongoing monthly checks to ensure accounting records are clean, complete, and audit-ready — with early issue detection.</p>
+        </article>
+        <article class="service-card">
+          <h3>Audit Preparation</h3>
+          <p>We clean and align your trial balance, build audit files, and reduce year-end costs through proactive readiness.</p>
+        </article>
+        <article class="service-card">
+          <h3>Auditor Liaison & Management</h3>
+          <p>We liaise directly with your auditors and manage the entire process to minimize disruption and deliver timely results.</p>
+        </article>
+        <article class="service-card">
+          <h3>Accounting Systems Review & Optimisation</h3>
+          <p>We assess your systems, processes, and integrations, then redesign your accounting function for scalability, accuracy, and automation readiness.</p>
+        </article>
+        <article class="service-card">
+          <h3>Strategic Accounting Advisory</h3>
+          <p>Customized advisory services designed to address complex accounting challenges and strategic financial considerations. We partner closely with your team to provide expert guidance that enhances compliance, optimizes accounting workflows, and supports sustainable business growth.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="differentiators">
+      <h2>Why Choose Us</h2>
+      <div class="differentiators">
+        <p><strong>Entrepreneurial Mindset:</strong> We think like business owners, not just accountants.</p>
+        <p><strong>Strategic Partner:</strong> Offering insights beyond numbers to fuel growth.</p>
+        <p><strong>Client-Centric:</strong> Tailored solutions designed around your unique goals.</p>
+        <p><strong>Proactive & Agile:</strong> We anticipate challenges and act fast.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+  <h2>Contact Us</h2>
+  <form action="https://formspree.io/f/mrbkpkjk" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+  </div>
+
+  <footer>
+    &copy; 2025 RRG Advisory. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Optional: Smooth scroll and active nav link highlighting
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+        const target = document.querySelector(link.getAttribute('href'));
+        target.scrollIntoView({behavior: 'smooth', block: 'start'});
+      });
+    });
+
+    // Set active nav link on scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      let scrollPos = window.scrollY + 80;
+      sections.forEach(section => {
+        if(scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+          const id = section.getAttribute('id');
+          document.querySelectorAll('nav ul li a').forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
